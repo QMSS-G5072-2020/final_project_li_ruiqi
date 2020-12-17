@@ -2,7 +2,7 @@
 
 ![](https://github.com/RuiqiLi-429/organized_coronavirus_info/workflows/build/badge.svg) [![codecov](https://codecov.io/gh/RuiqiLi-429/organized_coronavirus_info/branch/main/graph/badge.svg)](https://codecov.io/gh/RuiqiLi-429/organized_coronavirus_info) ![Release](https://github.com/RuiqiLi-429/organized_coronavirus_info/workflows/Release/badge.svg) [![Documentation Status](https://readthedocs.org/projects/organized_coronavirus_info/badge/?version=latest)](https://organized_coronavirus_info.readthedocs.io/en/latest/?badge=latest)
 
-This is a Python package aiming to providing people with organizedd Coronavirus information, taking advantage of NovelCOVID API.
+This is a Python package aiming to provide people with organized Coronavirus information, taking advantage of NovelCOVID API.
 
 ## Installation
 

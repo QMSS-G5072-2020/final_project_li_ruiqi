@@ -62,7 +62,7 @@ def organized_historical_recovered(historical_data):
     list_recovered = timeline['recovered'].values.tolist()
     recovered = pd.DataFrame(list_recovered)
     recovered['country'] = df['country']
-    recovered_organized = recovered.groupby('country').sum()
+    recovered_organized = recovered.groupby('country').sum() # organize recovered data
     return recovered_organized
 
 def plot_organized_historical_recovered(recovered_organized, query_country):
