@@ -240,6 +240,26 @@ def plot_organized_historical_recovered(recovered_organized, query_country):
 ## Part 2. Functions for acquiring data of different scope
 # 2.1 Acquiring data at the scope of global level
 def obtain_global_data():
+    """
+    This is a function used to generate data at global level, using another endpoint of NovelCOVID API.
+    API documentation: https://documenter.getpostman.com/view/11144369/Szf6Z9B3?version=latest#513b0f63-b3ae-4427-9e4d-d3f6937789e9
+    Official documentation: https://github.com/disease-sh/API
+    Authenticaiton: This API does not require a key and it is an open source.
+
+    Parameters (Inputs)
+    ----------
+
+    Returns (Output)
+    -------
+    DataFrame
+        A DataFrame object containing yesterday's data at global level
+
+    Examples
+    --------
+    >>> global_yesterday = obtain_global_data()
+    >>> type(global_yesterday)
+    pandas.core.frame.DataFrame
+    """
     r = requests.get("https://corona.lmao.ninja/v2/all?yesterday")
     if r.status_code != 200:
         print('API status !=200, failed')
@@ -252,6 +272,26 @@ def obtain_global_data():
 
 # 2.2 Acquiring data at the scope of continents, and following with bar plot provided
 def obtain_continent_data():
+    """
+    This is a function used to generate data at global level, using another endpoint of NovelCOVID API.
+    API documentation: https://documenter.getpostman.com/view/11144369/Szf6Z9B3?version=latest#513b0f63-b3ae-4427-9e4d-d3f6937789e9
+    Official documentation: https://github.com/disease-sh/API
+    Authenticaiton: This API does not require a key and it is an open source.
+
+    Parameters (Inputs)
+    ----------
+
+    Returns (Output)
+    -------
+    DataFrame
+        A DataFrame object containing yesterday's data of each continents
+
+    Examples
+    --------
+    >>> continent_yesterday = obtain_continent_data()
+    >>> type(continent_yesterday)
+    pandas.core.frame.DataFrame
+    """
     r = requests.get("https://corona.lmao.ninja/v2/continents?yesterday=true&sort")
     if r.status_code != 200:
         print('API status !=200, failed')
@@ -262,6 +302,31 @@ def obtain_continent_data():
     return(continent_df)
 
 def continent_bar_plot(continent_df,i):
+    """
+    This is a function used to plot bar graph of any available column containing data of each continent.
+
+    Parameters (Inputs)
+    ----------
+    continent_df : DataFrame
+        The DataFrame generated in previous function containing data of each continent
+    i : str
+        The specific column the user wants to get bar graph about.
+        Shoube belongs to the list ['cases','todayCases','deaths','todayDeaths','recovered','todayRecovered','active',
+                                    'critical','casesPerOneMillion','deathsPerOneMillion','tests','testsPerOneMillion',
+                                    'population','activePerOneMillion','recoveredPerOneMillion','criticalPerOneMillion']
+
+    Returns (Output)
+    -------
+    plot
+        A bar plot showing the information of each continent
+
+    Examples
+    --------
+    >>> continent_yesterday = obtain_continent_data()
+    >>> i = 'cases'
+    >>> continent_bar_plot(continent_yesterday, i)
+    will return the bar plot
+    """
     available_list = ['cases','todayCases','deaths','todayDeaths','recovered','todayRecovered','active','critical',
                       'casesPerOneMillion','deathsPerOneMillion','tests','testsPerOneMillion','population',
                       'activePerOneMillion','recoveredPerOneMillion','criticalPerOneMillion']
