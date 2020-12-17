@@ -94,6 +94,8 @@ def plot_organized_historical_cases(cases_organized, query_country):
     >>> plot_organized_historical_cases(cases, country)
     will return the line plot
     """
+    assert isinstance(cases_organized, pd.core.frame.DataFrame), "This function needs DataFrame as input."
+    assert isinstance(query_country, str), "The query_country needs to be a string."
     if query_country in cases_organized.index:
         query_country_df = cases_organized.loc[query_country, :]
         query_country_df.transpose().plot(kind='line', subplots=True)
@@ -159,6 +161,8 @@ def plot_organized_historical_deaths(deaths_organized, query_country):
     >>> plot_organized_historical_deaths(deaths, country)
     will return the line plot
     """
+    assert isinstance(deaths_organized, pd.core.frame.DataFrame), "This function needs DataFrame as input."
+    assert isinstance(query_country, str), "The query_country needs to be a string."
     if query_country in deaths_organized.index:
         query_country_df = deaths_organized.loc[query_country, :]
         query_country_df.transpose().plot(kind='line', subplots=True)
@@ -224,6 +228,8 @@ def plot_organized_historical_recovered(recovered_organized, query_country):
     >>> plot_organized_historical_recovered(recovered, country)
     will return the line plot
     """
+    assert isinstance(recovered_organized, pd.core.frame.DataFrame), "This function needs DataFrame as input."
+    assert isinstance(query_country, str), "The query_country needs to be a string."
     if query_country in recovered_organized.index:
         query_country_df = recovered_organized.loc[query_country, :]
         query_country_df.transpose().plot(kind='line', subplots=True)
@@ -231,5 +237,4 @@ def plot_organized_historical_recovered(recovered_organized, query_country):
     elif query_country not in recovered_organized.index:
         print('Query country is not available')
 
-
-
+## Part 2. Functions
