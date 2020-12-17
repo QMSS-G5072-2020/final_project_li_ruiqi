@@ -237,4 +237,42 @@ def plot_organized_historical_recovered(recovered_organized, query_country):
     elif query_country not in recovered_organized.index:
         print('Query country is not available')
 
-## Part 2. Functions
+## Part 2. Functions for acquiring data of different scope
+# 2.1 Acquiring data at the scope of global level
+def obtain_global_data():
+    r = requests.get("https://corona.lmao.ninja/v2/all?yesterday")
+    if r.status_code != 200:
+        print('API status !=200, failed')
+    elif r.status_code == 200:
+        print('API status = 200, sucessful')
+    global_data = r.json()
+    print(json.dumps(global_data, indent=2, sort_keys=True))
+    df = pd.Series(global_data).to_frame('yesterday data')
+    return(df)
+
+# 2.2 Acquiring data at the scope of continents, and following with bar plot provided
+def obtain_continent_data():
+    r = requests.get("https://corona.lmao.ninja/v2/continents?yesterday=true&sort")
+    if r.status_code != 200:
+        print('API status !=200, failed')
+    elif r.status_code == 200:
+        print('API status = 200, sucessful')
+    continent_data = r.json()
+    continent_df = pd.DataFrame(continent_data)
+    return(continent_df)
+
+def continent_bar_plot(continent_df,i):
+    available_list = ['cases','todayCases','deaths','todayDeaths','recovered','todayRecovered','active','critical',
+                      'casesPerOneMillion','deathsPerOneMillion','tests','testsPerOneMillion','population',
+                      'activePerOneMillion','recoveredPerOneMillion','criticalPerOneMillion']
+    assert i in available_list, "input is not in available list, please check the table provided by obtain_continent_data()"
+    fig = plt.figure()
+    ax = fig.add_axes([0,0,1,1])
+    continent = continent_df['continent']
+    if i in available_list:
+        y_axis = continent_df[i]
+        ax.bar(continent,y_axis)
+        bar_plot = plt.show()
+    return bar_plot
+
+
