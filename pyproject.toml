@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "organized_coronavirus_info"
+version = "0.1.0"
+description = "This is a Python package aiming to providing people with organized Coronavirus information, taking advantage of NovelCOVID API."
+authors = ["Ruiqi Li <rl3167@columbia.edu>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.1"
+pytest-cov = "^2.10.1"
+codecov = "^2.1.10"
+python-semantic-release = "^7.7.0"
+flake8 = "^3.8.4"
+sphinx = "^3.3.1"
+sphinxcontrib-napoleon = "^0.7"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
