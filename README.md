@@ -24,7 +24,7 @@ $ pip install -i https://test.pypi.org/simple/ organized_coronavirus_info
 
 ## Documentation
 
-The official documentation is hosted on Read the Docs: https://organized_coronavirus_info.readthedocs.io/en/latest/
+The official documentation is hosted on Read the Docs: https://organized-coronavirus-info.readthedocs.io/en/latest/
 
 ## Contributors
 
